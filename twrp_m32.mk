@@ -22,6 +22,10 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from m32 device
 $(call inherit-product, device/samsung/m32/device.mk)
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 PRODUCT_DEVICE := m32
 PRODUCT_NAME := twrp_m32
 PRODUCT_BRAND := samsung
@@ -29,6 +33,7 @@ PRODUCT_MODEL := SM-M325F
 PRODUCT_MANUFACTURER := samsung
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung-ss
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root,recovery/root)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="m32dd-user 12 SP1A.210812.016 M325FXXSBDXE2 release-keys"
